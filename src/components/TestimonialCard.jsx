@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
+import Image from 'next/image'
+
 
 export default function TestimonialsSection() {
     const testimonials = [
@@ -82,9 +84,11 @@ export default function TestimonialsSection() {
                 {testimonials.map((t, index) => (
                     <SwiperSlide key={index}>
                         <div className="bg-red-50 p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-between">
-                            <img
+                            <Image
                                 src={t.profile}
                                 alt={t.name}
+                                width={64}
+                                height={64}
                                 className="w-16 h-16 rounded-full mx-auto border-2 border-red-300"
                             />
                             <h3 className="text-lg font-bold text-red-700 mt-4">{t.name}</h3>
@@ -92,9 +96,11 @@ export default function TestimonialsSection() {
                             <p className="text-neutral-700 mt-2">{t.text}</p>
 
                             {t.testimonialImage && (
-                                <img
+                                <Image
                                     src={t.testimonialImage}
                                     alt="Foto do produto"
+                                    width={400}
+                                    height={400}
                                     className="mt-4 rounded-lg shadow"
                                 />
                             )}

@@ -8,6 +8,7 @@ export default function VideoPlayer({ videoId }) {
     const playerRef = useRef(null)
     const [isPlaying, setIsPlaying] = useState(false)
     const [volume, setVolume] = useState(50)
+    const [play, setPlay] = useState(false)
 
     const opts = {
         width: '100%',
@@ -63,30 +64,39 @@ export default function VideoPlayer({ videoId }) {
     }
 
     return (
-        <div className="relative w-full aspect-video overflow-hidden shadow h-screen">
-            <YouTube
-                videoId={videoId}
-                opts={opts}
-                onReady={handleReady}
-                iframeClassName="absolute top-0 left-0 w-full h-full"
-                iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
-            />
-
+        <div className="relative w-full max-h-[90vh] aspect-video overflow-hidden shadow-md">
+            {!play ? (
+                <img
+                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                    alt="Thumbnail"
+                    className="w-full h-full object-cover cursor-pointer"
+                    onClick={() => setPlay(true)}
+                    loading="lazy"
+                />
+            ) : (
+                <YouTube
+                    videoId={videoId}
+                    opts={opts}
+                    onReady={handleReady}
+                    iframeClassName="absolute top-0 left-0 w-full h-full"
+                    iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
+                />
+            )}
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/20 px-4">
                 <p className="text-white/70 italic text-sm md:text-base mb-2 drop-shadow-sm">
                     Dê play para uma experiência imersiva
                 </p>
 
-                <h1 className="text-red-700 text-5xl md:text-7xl font-extrabold drop-shadow-lg">
+                <h1 className="text-red-700 text-4xl md:text-6xl font-extrabold drop-shadow-lg">
                     Jordan 1 Chicago
                 </h1>
-                <p className="text-white/80 font-bold mt-3 text-xl md:text-2xl max-w-lg mx-auto drop-shadow-sm">
+                <p className="text-white/80 font-bold mt-2 text-lg md:text-2xl max-w-lg mx-auto drop-shadow-sm">
                     O icônico tênis que combina estilo clássico e performance incomparável.
                 </p>
 
                 <UTMLink
-                    href="/checkout/1?utm_source=vsl&utm_campaign=jordan1-chicago&utm_medium=email"
+                    href={`/checkout/1?utm_source=vsl&utm_campaign=jordan1-chicago&utm_medium=email`}
                     utm={{ utm_source: 'vsl', utm_campaign: 'jordan1' }}
                     className="mt-6 inline-block px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition"
                 >
@@ -94,31 +104,26 @@ export default function VideoPlayer({ videoId }) {
                 </UTMLink>
             </div>
 
-
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-4">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-3 md:gap-4">
                 <button
                     onClick={decreaseVolume}
-                    className="px-5 py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
+                    className="px-4 py-2 md:px-5 md:py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
                 >
                     -
                 </button>
                 <button
                     onClick={togglePlay}
-                    className="px-5 py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
+                    className="px-4 py-2 md:px-5 md:py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
                 >
                     {isPlaying ? '❚❚' : '▶'}
                 </button>
                 <button
                     onClick={increaseVolume}
-                    className="px-5 py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
+                    className="px-4 py-2 md:px-5 md:py-2 bg-white text-black font-semibold rounded-lg shadow hover:bg-white/90 transition"
                 >
                     +
                 </button>
             </div>
-
-
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-30 animate-pulse"></div>
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
         </div>
     )
 }

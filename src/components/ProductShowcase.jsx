@@ -1,6 +1,7 @@
 'use client'
 
 import UTMLink from './UTMLink'
+import Image from 'next/image';
 
 export default function ProductShowcase() {
     const products = [
@@ -46,9 +47,11 @@ export default function ProductShowcase() {
                     {products.map((product) => (
                         <div key={product.id} className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col transition transform hover:scale-105">
 
-                            <img
+                            <Image
                                 src={product.image}
                                 alt={product.title}
+                                width={300}
+                                height={300}
                                 className="w-full h-64 md:h-72 object-cover"
                             />
 
