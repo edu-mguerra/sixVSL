@@ -18,21 +18,25 @@ export default function CheckoutPage({ params, searchParams }) {
     if (!product) return <p className="text-center py-20 text-red-600 font-bold">Produto não encontrado!</p>;
 
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-red-50 to-white">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-red-700 drop-shadow-lg text-center px-2">
+        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-red-50 to-white overflow-hidden">
+
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 text-red-700 drop-shadow-lg text-center px-2">
                 Finalize sua Compra
             </h1>
 
-            <div className="max-w-sm sm:max-w-md w-full bg-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col gap-4">
+            <div className="w-full max-w-sm sm:max-w-md flex flex-col gap-4 bg-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-2xl">
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-48 sm:h-64 md:h-80 rounded-xl shadow-md object-cover"
+                    className="w-full max-h-56 sm:max-h-64 md:max-h-72 object-cover rounded-xl shadow-md"
                 />
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
-                <p className="text-red-600 text-xl sm:text-2xl md:text-3xl font-extrabold">{product.price}</p>
-                <p className="text-sm sm:text-base text-gray-500">{product.installment}</p>
-                <p className="mt-1 sm:mt-2 text-gray-600 text-sm sm:text-base">{product.description}</p>
+
+                <div className="flex flex-col gap-1 text-center">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-red-800">{product.title}</h2>
+                    <p className="text-red-600 text-lg sm:text-xl md:text-2xl font-bold">{product.price}</p>
+                    <p className="text-gray-500 text-sm sm:text-base">{product.installment}</p>
+                    <p className="text-gray-600 text-sm sm:text-base mt-1">{product.description}</p>
+                </div>
 
                 <UTMLink
                     href={`/thank-you/${product.id}?utm_source=vsl&utm_campaign=${product.sku}&utm_medium=email`}
@@ -42,11 +46,12 @@ export default function CheckoutPage({ params, searchParams }) {
                 </UTMLink>
             </div>
 
-            <p className="mt-6 text-xs sm:text-sm md:text-base text-gray-500 text-center max-w-xs sm:max-w-md px-2">
+            <p className="mt-4 sm:mt-6 text-xs sm:text-sm md:text-base text-gray-500 text-center max-w-xs sm:max-w-md px-2">
                 Ao clicar em “Finalizar Compra”, você concorda com nossa{' '}
                 <a href="/terms" className="text-red-700 underline">Política de Privacidade</a> e{' '}
                 <a href="/terms" className="text-red-700 underline">Termos de Uso</a>.
             </p>
+
         </main>
     );
 

@@ -16,6 +16,7 @@ export default function VideoPlayer({ videoId }) {
             modestbranding: 1,
             rel: 0,
             autoplay: 0,
+            mute: 0
         },
     }
 

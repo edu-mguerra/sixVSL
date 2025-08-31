@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import UTMLink from "@/components/UTMLink";
 import * as React from "react";
@@ -21,67 +20,53 @@ function ThankYouPageContent({ params }) {
     ];
 
     const product = products.find(p => p.id === id);
-    const [phone, setPhone] = useState("");
-
     if (!product) return <p className="text-center py-20 text-red-600 font-bold">Produto não encontrado!</p>;
 
     const utmParams = {};
     searchParams.forEach((value, key) => { utmParams[key] = value; });
 
-    const generateWhatsappLink = () => {
-        if (!phone) return "#";
-        const cleanedPhone = phone.replace(/\D/g, "");
-        const message = `Olá! Comprei ${product.title} por ${product.price}`;
-        return `https://wa.me/${cleanedPhone}?text=${encodeURIComponent(message)}`;
-    };
+    const whatsappNumber = "5587992020340";
+    const whatsappMessage = `Olá! Comprei ${product.title} por ${product.price}`;
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-red-50 to-white flex flex-col items-center justify-center p-4 sm:p-6">
-            <div className="max-w-sm sm:max-w-md w-full bg-white p-6 sm:p-8 rounded-3xl shadow-2xl flex flex-col gap-6 text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-red-700 drop-shadow-md">
-                    Obrigado pela compra!
-                </h1>
+        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-red-50 to-white overflow-hidden">
+            <div className="w-full max-w-md h-full flex flex-col justify-between bg-white rounded-3xl shadow-2xl p-6 sm:p-8 gap-6">
+                <div className="flex flex-col items-center text-center gap-4">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-red-700 drop-shadow-md">
+                        Obrigado pela compra!
+                    </h1>
 
-                <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-xl shadow-md"
-                />
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full max-h-64 sm:max-h-72 md:max-h-80 object-cover rounded-xl shadow-md"
+                    />
 
-                <div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
                     <p className="text-red-600 text-lg sm:text-xl md:text-2xl font-bold">{product.price}</p>
                     <p className="text-gray-500 text-sm sm:text-base">{product.installment}</p>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                    <input
-                        type="tel"
-                        placeholder="5587992020340"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 text-center text-sm sm:text-base"
-                    />
-
+                <div className="flex flex-col gap-3 mt-4">
                     <a
-                        href={generateWhatsappLink()}
+                        href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-green-500 text-white font-bold py-3 rounded-xl shadow-md hover:bg-green-600 transition-colors text-sm sm:text-base"
+                        className="w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-md hover:bg-green-600 transition-colors text-sm sm:text-base text-center"
                     >
                         Enviar WhatsApp
                     </a>
-                </div>
 
-                <UTMLink
-                    href='/'
-                    utm={utmParams}
-                    className="mt-4 w-full inline-block px-4 sm:px-6 py-3 bg-red-700 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 transition-colors text-sm sm:text-base"
-                >
-                    Comprar outro
-                </UTMLink>
+                    <UTMLink
+                        href='/'
+                        utm={utmParams}
+                        className="w-full mt-2 px-4 sm:px-6 py-3 bg-red-700 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 transition-colors text-sm sm:text-base text-center"
+                    >
+                        Comprar outro
+                    </UTMLink>
+                </div>
             </div>
         </main>
     );
-
 }
