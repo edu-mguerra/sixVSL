@@ -1,8 +1,8 @@
-import ProductCard from "@/components/ProductCard"
-import TestimonialCard from "@/components/TestimonialCard"
-import UTMLink from "@/components/UTMLink"
-import VideoPlayer from "@/components/VideoPlayer"
-import { getServerUTM } from "@/lib/utm"
+import ProductShowcase from '../components/ProductShowcase.jsx'
+import TestimonialCard from '../components/TestimonialCard.jsx'
+import VideoPlayer from '../components/VideoPlayer.jsx'
+import { getServerUTM } from '../lib/utm'
+
 
 export default async function Home() {
   const utm = await getServerUTM()
@@ -15,7 +15,7 @@ export default async function Home() {
       </section>
 
       <section className="py-16 bg-red-50">
-        <ProductCard />
+        <ProductShowcase />
       </section>
 
       <section className="py-16 bg-white">
