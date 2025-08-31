@@ -65,23 +65,15 @@ export default function VideoPlayer({ videoId }) {
 
     return (
         <div className="relative w-full max-h-[90vh] aspect-video overflow-hidden shadow-md">
-            {!play ? (
-                <img
-                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                    alt="Thumbnail"
-                    className="w-full h-full object-cover cursor-pointer"
-                    onClick={() => setPlay(true)}
-                    loading="lazy"
-                />
-            ) : (
-                <YouTube
-                    videoId={videoId}
-                    opts={opts}
-                    onReady={handleReady}
-                    iframeClassName="absolute top-0 left-0 w-full h-full"
-                    iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
-                />
-            )}
+
+            <YouTube
+                videoId={videoId}
+                opts={opts}
+                onReady={handleReady}
+                iframeClassName="absolute top-0 left-0 w-full h-full"
+                iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
+            />
+
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/20 px-4">
                 <p className="text-white/70 italic text-sm md:text-base mb-2 drop-shadow-sm">
@@ -95,13 +87,7 @@ export default function VideoPlayer({ videoId }) {
                     O icônico tênis que combina estilo clássico e performance incomparável.
                 </p>
 
-                <UTMLink
-                    href={`/checkout/1?utm_source=vsl&utm_campaign=jordan1-chicago&utm_medium=email`}
-                    utm={{ utm_source: 'vsl', utm_campaign: 'jordan1' }}
-                    className="mt-6 inline-block px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition"
-                >
-                    Comprar Agora
-                </UTMLink>
+
             </div>
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-3 md:gap-4">
