@@ -16,7 +16,7 @@ export default function VideoPlayer({ videoId }) {
             autoplay: 1,
             controls: 0,
             modestbranding: 1,
-            loop: 1,
+            loop: 0,
             mute: 0,
             playlist: videoId,
             rel: 0

@@ -17,32 +17,38 @@ export default function CheckoutPage({ params, searchParams }) {
 
     if (!product) return <p className="text-center py-20 text-red-600 font-bold">Produto não encontrado!</p>;
 
-
-
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-red-50 to-white">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-red-700 drop-shadow-lg text-center">
+        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-red-50 to-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-red-700 drop-shadow-lg text-center px-2">
                 Finalize sua Compra
             </h1>
 
-            <div className="max-w-md w-full bg-white p-6 md:p-8 rounded-3xl shadow-2xl flex flex-col gap-4">
-                <img src={product.image} alt={product.title} className="w-full h-64 md:h-80 rounded-xl shadow-md object-cover" />
-                <h2 className="text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
-                <p className="text-red-600 text-2xl md:text-3xl font-extrabold">{product.price}</p>
-                <p className="text-sm text-gray-500">{product.installment}</p>
-                <p className="mt-2 text-gray-600">{product.description}</p>
+            <div className="max-w-sm sm:max-w-md w-full bg-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col gap-4">
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 sm:h-64 md:h-80 rounded-xl shadow-md object-cover"
+                />
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
+                <p className="text-red-600 text-xl sm:text-2xl md:text-3xl font-extrabold">{product.price}</p>
+                <p className="text-sm sm:text-base text-gray-500">{product.installment}</p>
+                <p className="mt-1 sm:mt-2 text-gray-600 text-sm sm:text-base">{product.description}</p>
 
                 <UTMLink
-                    href={`/thank-you/${product.id}?utm_source=vsl&utm_campaign=${product.sku}&utm_medium=email`} className="mt-2 block bg-red-700 text-white px-4 py-2 rounded text-center">
+                    href={`/thank-you/${product.id}?utm_source=vsl&utm_campaign=${product.sku}&utm_medium=email`}
+                    className="mt-4 sm:mt-6 block bg-red-700 text-white font-bold text-sm sm:text-base md:text-lg px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow-lg text-center hover:bg-red-600 transition"
+                >
                     Comprar Agora
                 </UTMLink>
             </div>
 
-            <p className="mt-6 text-sm text-gray-500 text-center max-w-md">
+            <p className="mt-6 text-xs sm:text-sm md:text-base text-gray-500 text-center max-w-xs sm:max-w-md px-2">
                 Ao clicar em “Finalizar Compra”, você concorda com nossa{' '}
                 <a href="/terms" className="text-red-700 underline">Política de Privacidade</a> e{' '}
                 <a href="/terms" className="text-red-700 underline">Termos de Uso</a>.
             </p>
         </main>
     );
+
+
 }

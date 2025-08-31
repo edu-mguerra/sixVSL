@@ -36,40 +36,52 @@ function ThankYouPageContent({ params }) {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-red-50 to-white flex flex-col items-center justify-center p-6">
-            <div className="max-w-md w-full bg-white p-8 rounded-3xl shadow-2xl flex flex-col gap-6 text-center">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-red-700 drop-shadow-md">Obrigado pela compra!</h1>
-                <img src={product.image} alt={product.title} className="w-full h-64 md:h-80 object-cover rounded-xl shadow-md" />
+        <main className="min-h-screen bg-gradient-to-b from-red-50 to-white flex flex-col items-center justify-center p-4 sm:p-6">
+            <div className="max-w-sm sm:max-w-md w-full bg-white p-6 sm:p-8 rounded-3xl shadow-2xl flex flex-col gap-6 text-center">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-red-700 drop-shadow-md">
+                    Obrigado pela compra!
+                </h1>
+
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-xl shadow-md"
+                />
+
                 <div>
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
-                    <p className="text-red-600 text-xl md:text-2xl font-bold">{product.price}</p>
-                    <p className="text-gray-500">{product.installment}</p>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-red-800">{product.title}</h2>
+                    <p className="text-red-600 text-lg sm:text-xl md:text-2xl font-bold">{product.price}</p>
+                    <p className="text-gray-500 text-sm sm:text-base">{product.installment}</p>
                 </div>
+
                 <div className="flex flex-col gap-3">
                     <input
                         type="tel"
-                        placeholder="Digite seu WhatsApp"
+                        placeholder="5587992020340"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 text-center"
+                        className="px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 text-center text-sm sm:text-base"
                     />
+
                     <a
                         href={generateWhatsappLink()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-green-500 text-white font-bold py-3 rounded-xl shadow-md hover:bg-green-600 transition-colors"
+                        className="bg-green-500 text-white font-bold py-3 rounded-xl shadow-md hover:bg-green-600 transition-colors text-sm sm:text-base"
                     >
                         Enviar WhatsApp
                     </a>
                 </div>
+
                 <UTMLink
-                    href={`/checkout?${new URLSearchParams(utmParams).toString()}`}
+                    href='/'
                     utm={utmParams}
-                    className="mt-4 w-full inline-block px-6 py-3 bg-red-700 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 transition-colors"
+                    className="mt-4 w-full inline-block px-4 sm:px-6 py-3 bg-red-700 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 transition-colors text-sm sm:text-base"
                 >
                     Comprar outro
                 </UTMLink>
             </div>
         </main>
     );
+
 }

@@ -35,7 +35,7 @@ export default function ProductShowcase() {
 
     return (
         <>
-            <h1 className="text-red-700 text-3xl sm:text-4xl md:text-5xl py-4 sm:py-6 text-center font-extrabold drop-shadow-md leading-tight">
+            <h1 className="text-red-700 text-3xl px-5 sm:text-2xl md:text-3xl py-4 sm:py-6 text-center font-extrabold drop-shadow-md leading-tight">
                 Descubra os Jordan que vão elevar seu estilo
             </h1>
 
