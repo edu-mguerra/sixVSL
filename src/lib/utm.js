@@ -11,7 +11,7 @@ export async function getServerUTM() {
 }
 
 export function buildQueryWithUTM(href, utm) {
-    const url = new URL(href, 'https://dummy.base') // base fake para construir URL
+    const url = new URL(href, 'https://dummy.base')
     Object.entries(utm).forEach(([k, v]) => {
         if (v) url.searchParams.set(k, v)
     })

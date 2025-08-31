@@ -1,7 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 
 
-// Nome do cookie utilizado para armazenar UTMs
 const UTM_COOKIE = 'utm'
 
 
@@ -24,7 +23,7 @@ export function middleware(req) {
 
 
     if (Object.keys(utmFromQuery).length > 0) {
-        // Mescla com o que já existe
+
         const existing = req.cookies.get(UTM_COOKIE)?.value
         let current = {}
         if (existing) {
