@@ -5,6 +5,7 @@ import UTMLink from './UTMLink'
 export default function ProductShowcase() {
     const products = [
         {
+            id: 1,
             title: 'Jordan 1 Chicago',
             description: 'O icônico tênis que combina estilo clássico e performance incomparável. Um clássico que não sai de moda e garante destaque em qualquer ocasião.',
             price: 'R$ 1.497,00',
@@ -13,6 +14,7 @@ export default function ProductShowcase() {
             sku: 'jordan1-chicago',
         },
         {
+            id: 2,
             title: 'Jordan 1 Black Toe',
             description: 'Tênis que une design clássico e conforto excepcional. Ideal para quem quer se destacar com estilo.',
             price: 'R$ 1.399,00',
@@ -21,6 +23,7 @@ export default function ProductShowcase() {
             sku: 'jordan1-blacktoe',
         },
         {
+            id: 3,
             title: 'Jordan 1 Royal',
             description: 'O clássico Royal combina tradição e modernidade, perfeito para colecionadores e apaixonados por sneakers.',
             price: 'R$ 1.449,00',
@@ -41,7 +44,7 @@ export default function ProductShowcase() {
                 <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     {products.map((product) => (
-                        <div key={product.sku} className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col transition transform hover:scale-105">
+                        <div key={product.id} className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col transition transform hover:scale-105">
 
                             <img
                                 src={product.image}
@@ -59,12 +62,10 @@ export default function ProductShowcase() {
                                 </div>
 
                                 <UTMLink
-                                    href="/checkout"
-                                    utm={{ utm_source: 'vsl', utm_campaign: product.sku, sku: product.sku }}
-                                    className="mt-4 w-full inline-block px-6 py-3 bg-red-700 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 transition text-center"
-                                >
+                                    href={`/checkout/${product.id}?utm_source=vsl&utm_campaign=${product.sku}&utm_medium=email`} className="mt-2 block bg-red-700 text-white px-4 py-2 rounded text-center">
                                     Comprar Agora
                                 </UTMLink>
+
                             </div>
                         </div>
                     ))}

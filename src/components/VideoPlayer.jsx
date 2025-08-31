@@ -72,9 +72,8 @@ export default function VideoPlayer({ videoId }) {
                 iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
             />
 
-            {/* Overlay de texto */}
+
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/20 px-4">
-                {/* Pequena legenda inicial */}
                 <p className="text-white/70 italic text-sm md:text-base mb-2 drop-shadow-sm">
                     Dê play para uma experiência imersiva
                 </p>
@@ -87,7 +86,7 @@ export default function VideoPlayer({ videoId }) {
                 </p>
 
                 <UTMLink
-                    href="/checkout"
+                    href="/checkout/1?utm_source=vsl&utm_campaign=jordan1-chicago&utm_medium=email"
                     utm={{ utm_source: 'vsl', utm_campaign: 'jordan1' }}
                     className="mt-6 inline-block px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition"
                 >
@@ -95,7 +94,7 @@ export default function VideoPlayer({ videoId }) {
                 </UTMLink>
             </div>
 
-            {/* Botões flutuando na parte inferior */}
+
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-4">
                 <button
                     onClick={decreaseVolume}
@@ -117,7 +116,7 @@ export default function VideoPlayer({ videoId }) {
                 </button>
             </div>
 
-            {/* Elementos decorativos */}
+
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-30 animate-pulse"></div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
         </div>
