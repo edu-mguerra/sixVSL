@@ -29,7 +29,7 @@ export default function VideoPlayer({ videoId }) {
     }
 
     return (
-        <div className="relative w-full max-h-[90vh] aspect-video overflow-hidden shadow-md">
+        <div className="relative w-full max-h-[100vh] aspect-video overflow-hidden shadow-md">
 
             <YouTube
                 videoId={videoId}
@@ -38,12 +38,10 @@ export default function VideoPlayer({ videoId }) {
                 iframeClassName="absolute top-0 left-0 w-full h-full"
                 iframeProps={{ loading: 'lazy', title: 'VSL Video' }}
             />
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/20 px-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/20 px-4 pointer-events-none">
                 <p className="text-white/70 italic text-sm md:text-base mb-2 drop-shadow-sm">
                     Dê play para uma experiência imersiva
                 </p>
-
                 <h1 className="text-red-700 text-4xl md:text-6xl font-extrabold drop-shadow-lg">
                     Jordan 1 Chicago
                 </h1>
@@ -51,6 +49,9 @@ export default function VideoPlayer({ videoId }) {
                     O icônico tênis que combina estilo clássico e performance incomparável.
                 </p>
             </div>
+
+
+
         </div>
     )
 }
