@@ -37,14 +37,12 @@ export default function ProductShowcase() {
     return (
         <>
 
-            <br />
 
-            <br />
-            <br />
+
             <h1 className="text-red-700 text-3xl px-5 sm:text-2xl md:text-3xl py-4 sm:py-6 text-center font-extrabold drop-shadow-md leading-tight">
                 Descubra os Jordan que vão elevar seu estilo
             </h1>
-            <p className="text-red-700  px-32 text-justify font-bold sm:text-sm md:text-lg sm:px-4 text-center leading-relaxed">
+            <p className="text-red-700 font-bold text-center leading-relaxed text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-16 lg:px-24 max-w-3xl mx-auto">
                 Explore a combinação perfeita de design icônico, conforto inigualável e performance de alta qualidade. <br />
                 Cada Jordan conta uma história de tradição e atitude, trazendo autenticidade ao seu estilo e confiança a cada passo.
             </p>
